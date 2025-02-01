@@ -1,0 +1,5 @@
+@import "tailwindcss";
+
+.food-item{
+@apply w-full mx-auto rounded-[15px] shadow-lg transition-all duration-500
+}

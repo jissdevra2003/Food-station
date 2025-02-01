@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+
+.food-display{
+@apply mt-7 
+}
+
+.food-display h2{
+@apply text-[max(2vw,30px)] font-semibold font-sans
+}
+
+.food-display-list{
+@apply grid grid-cols-[repeat(auto-fill,minmax(240px,1fr))] gap-8
+}

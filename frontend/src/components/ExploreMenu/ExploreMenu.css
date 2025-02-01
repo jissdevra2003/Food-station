@@ -1,0 +1,5 @@
+@import "tailwindcss";
+
+.explore-menu-list{
+@apply flex justify-between items-center gap-[30px] text-center my-5 overflow-x-scroll
+}

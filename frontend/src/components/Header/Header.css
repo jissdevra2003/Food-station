@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+.header{
+@apply h-[34vw]  mx-auto bg-cover rounded-xl mb-8 bg-[url('/header4.jpg')] bg-no-repeat relative
+}
+.header-contents{
+@apply font-serif absolute flex flex-col items-start gap-[1.5vw] max-w-[50%]  bottom-[15%] left-[6vw]
+}
+
+.header-contents h2{
+@apply font-medium text-white text-[max(4.5vw,22px)]
+}
+.header-contents p{
+@apply font-serif text-white text-4xl
+
+}
+
+
+
+.button-click{
+@apply font-serif font-medium p-[1vw] bg-white cursor-pointer text-[max(1vw,13px)] rounded-[50px] text-right transition duration-300 hover:bg-gray-300 hover:scale-105
+}

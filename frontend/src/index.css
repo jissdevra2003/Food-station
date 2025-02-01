@@ -1,0 +1,13 @@
+@import "tailwindcss";
+@theme{
+  --font-display: "Oswald", "sans-serif"; 
+--font-second:"Fredoka", "serif";
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
