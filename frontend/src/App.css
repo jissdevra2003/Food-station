@@ -1,1 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka&family=Lora:ital,wght@0,400..700;1,400..700&family=Outfit:wght@100..900&display=swap');
+
+@import "tailwindcss";
+.app{
+@apply w-4/5 font-serif p-0 m-auto box-border bg-white min-h-screen 
+}

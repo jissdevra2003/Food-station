@@ -1,6 +1,9 @@
 import React from 'react';
 import './FoodItem.css';
 import { assets } from '../../assets/assets';
+import {useState} from 'react';
+import {useContext} from 'react';
+import {StoreContext} from '../../context/StoreContext.jsx';
 
 //for displaying the food item info
 function FoodItem(
@@ -13,6 +16,10 @@ image
 }
 )
 {
+
+const {cartItems,addToCart,removeFromCart}=useContext(StoreContext);
+
+
 return (
 <div className="food-item">
 
@@ -20,6 +27,25 @@ return (
 <img
 className="food-item-image"
 src={image} alt=""/>
+{!cartItems[id]
+?<img
+className='add-quantity'
+onClick={()=>addToCart(id)}
+ src={assets.add_icon_white} alt=""/>
+:
+<div className='food-item-counter'>
+<img 
+
+onClick={()=>removeFromCart(id)}
+ src={assets.remove_icon_red} alt=""/>
+<p className="font-mono">{cartItems[id]}</p>
+<img 
+
+onClick={()=>addToCart(id)}
+src={assets.add_icon_green} alt=""/>
+</div>
+
+}
 </div>
 <div className="food-item-info">
 <div className="food-item-name-rating">

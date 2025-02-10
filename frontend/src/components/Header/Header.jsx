@@ -5,7 +5,7 @@ function Header()
 {
 return (
 <div    //header
-className="header"
+className="header mt-41"
 >
 <div    //header-contents
 className="header-contents" style={{ animation: 'fadeIn 3s ease-in-out' }}

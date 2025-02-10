@@ -3,3 +3,50 @@
 .food-item{
 @apply w-full mx-auto rounded-[15px] shadow-lg transition-all duration-500
 }
+
+.food-item-image{
+@apply w-full rounded-t-lg rounded-none
+}
+
+.food-item-info{
+@apply p-5
+}
+
+.food-item-name-rating{
+@apply flex justify-between items-center mb-2
+}
+
+.food-item-name-rating p{
+@apply  font-bold
+}
+
+.food-item-name-rating img{
+@apply w-20
+}
+
+.food-item-description{
+@apply text-sm text-gray-600
+}
+
+.food-item-price{
+@apply text-orange-600 mt-2 font-bold text-lg
+}
+
+
+.add-quantity {
+  @apply cursor-pointer w-8 absolute bottom-4 right-4 rounded-full bg-white p-2 
+         transition ease-in-out duration-150 hover:bg-gray-100 hover:shadow-sm  active:bg-gray-200  hover:scale-105 active:scale-95
+}
+
+.food-item-img-container
+{
+@apply relative
+}
+
+.food-item-counter{
+@apply absolute bottom-4 right-4 flex items-center gap-2 p-1 rounded-full bg-white
+}
+
+.food-tem-counter img{
+@apply w-7 cursor-pointer
+}

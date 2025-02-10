@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+.footer{
+@apply w-full flex flex-col mt-0 items-center gap-[20px] pt-[80px] bg-gray-800 text-blue-50 p-[20px_8vw] ml-0 
+}
+
+.footer-content{
+@apply w-full grid grid-cols-[2fr_1fr_1fr] gap-[80px]
+}
+
+.footer-content-left,.footer-content-right,.footer-content-center{
+@apply  flex flex-col items-start gap-5
+}
+
+.footer-content-left li,.footer-content-right li,.footer-content-center li{
+@apply list-none mb-2 cursor-pointer
+}
+
+.footer-content-right h2,.footer-content-center h2{
+@apply text-white font-extrabold
+} 
+
+.footer hr{
+@apply w-full h-0 border mb-2 bg-gray-500
+}

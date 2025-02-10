@@ -16,8 +16,8 @@ id="explore-menu"
 className="font-black text-cyan-900"
 >Find your favorite food here...</h1>
 <p //explore-menu-text
-className="max-w-1/2"
->Choose from a diverse menu </p>
+className="w-full font-semibold"
+>Enjoy our delicious and mouth-watering dishes, crafted to delight your taste buds.</p>
 <div  //explore-menu-list
 className="explore-menu-list"
    style={{

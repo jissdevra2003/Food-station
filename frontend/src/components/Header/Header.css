@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 .header{
-@apply h-[34vw]  mx-auto bg-cover rounded-xl mb-8 bg-[url('/header4.jpg')] bg-no-repeat relative
+@apply h-[34vw]  mx-auto  bg-cover rounded-xl mb-8 bg-[url('/header4.jpg')] bg-no-repeat relative
 }
 .header-contents{
 @apply font-serif absolute flex flex-col items-start gap-[1.5vw] max-w-[50%]  bottom-[15%] left-[6vw]

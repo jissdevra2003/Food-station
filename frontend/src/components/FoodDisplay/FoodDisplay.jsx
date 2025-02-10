@@ -1,7 +1,7 @@
 import React from 'react';
 import { useContext } from 'react';
 import './FoodDisplay.css'
-import { StoreContext } from '../../context/storeContext';
+import { StoreContext } from '../../context/StoreContext.jsx';
 import FoodItem from '../FoodItem/FoodItem';
 
 function FoodDisplay({
@@ -19,6 +19,10 @@ Top dishes near you
 <p>this is great food</p>
 <div className="food-display-list" style={{ animation: 'fadeIn 2s ease-in-out' }}>
 {food_list.map((item,index)=>{
+{console.log(category,item.category)}
+if(category==="All" || category===item.category)
+{
+//passing props to FoodItem component
   return <FoodItem 
 key={index}
 id={item._id}
@@ -26,6 +30,7 @@ description={item.description}
 name={item.name}
 price={item.price}
 image={item.image} />
+}
 })}
 </div>
 

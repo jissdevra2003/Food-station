@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+.app-download{
+@apply m-auto font-medium mt-30 justify-center text-[max(3vw,20px)] mb-10
+}
+
+.app-download-platforms{
+@apply flex justify-center gap-[2vw_10px] mt-10 
+}
+
+.app-download-platforms img{
+@apply w-[max(30vw,120px)] max-w-[180px] transition-transform  hover:scale-105 duration-500
+cursor-pointer
+}
