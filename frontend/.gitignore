@@ -13,8 +13,8 @@ dist-ssr
 *.local
 frontend/src/context/ContextUnderstanding.jsx
 frontend/src/assets/
-admin/src/assets
-backend/.env
+
+
 
 # Editor directories and files
 .vscode/*
