@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+.app{
+@apply text-white
+}
+
+
+.app-content{
+@apply flex
+}

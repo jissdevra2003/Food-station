@@ -1,8 +1,20 @@
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@200..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Grechen+Fuemen&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans:wght@100..900&display=swap');
+@import "tailwindcss"; 
+
+
 @theme{
-  --font-display: "Oswald", "sans-serif"; 
---font-second:"Fredoka", "serif";
+--font-gre:Grechen Fuemen,"sans-serif";
+--font-assistant:Assistant,"sans-serif";
+--font-encode-sans:Encode Sans,"serif"
 }
+
+html{
+scroll-behavior: smooth;
+}
+
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -15,5 +27,7 @@
 
 
 body{
-@appy min-h-screen
+@apply min-h-screen bg-gray-200 w-full
+
+
 }

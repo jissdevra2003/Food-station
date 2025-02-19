@@ -1,0 +1,118 @@
+import React, { useState,} from "react";
+import './Add.css'
+import {assets} from '../../assets/assets.js'
+import axios from "axios";
+import { toast } from "react-toastify";
+
+function Add()
+{
+
+const url="http://localhost:4000/api/v1"
+
+const [image,setImage]=useState(false);
+const [data,setData]=useState({
+name:"",
+description:"",
+price:"",
+category:"Salad"
+
+});
+
+const onChangeHandler=(event)=>{
+ const name=event.target.name;
+const value=event.target.value;
+setData(prevData=>({...prevData,[name]:value}))
+}
+
+const onSubmitHandler=async (event)=>{
+event.preventDefault();
+//create a new FormData object which will hold the form data that you want to send.
+const formData=new FormData();
+//Add the value of data.name to the form data with the key "name"
+formData.append("name",data.name);
+formData.append("description",data.description);
+formData.append("price",Number(data.price));
+formData.append("category",data.category);
+formData.append("image",image);
+
+
+//using axios we send the request to the backend server
+//we have written add as post method
+const response = await axios.post(`${url}/food/add`,formData);
+
+if(response.data.success){
+
+//if successfull reset the data in the form 
+setData({
+name:"",
+description:"",
+price:"",
+category:"Salad"
+
+})
+setImage(false)
+toast.success(response.data.message);
+}
+else{
+toast.error(response.data.message)
+}
+
+
+}
+
+
+
+return (
+<>
+<div className="add">
+<form className="" onSubmit={onSubmitHandler}>
+<div className="add-img-upload">
+<p className="text-lg">Upload Image</p>
+<label htmlFor="image">
+{/* to show the preview of image, if a image is uploaded show that otherwise show upload image only */}
+<img src={image?URL.createObjectURL(image):assets.upload_area } alt="" />  
+</label>
+<input 
+onChange={(e)=>setImage(e.target.files[0])}   //this will open the file explorer
+type="file" id="image" hidden required />
+</div>
+<div className="add-product-name">
+<p className="text-lg">Product name</p>
+<input onChange={onChangeHandler} value={data.name} type="text" name="name" placeholder="Type here"/>
+</div>
+<div className="add-product-description">
+<p className="text-lg">Product description</p>
+<textarea onChange={onChangeHandler} value={data.description} name="description"  rows="5" placeholder="Type here" required></textarea>
+</div>
+<div className="add-category-price">
+<div className="add-category">
+<p className="text-lg">Product category</p>
+<select onChange={onChangeHandler} name="category" >
+<option value="Pizza">Pizza</option>
+<option value="Salad">Salad</option>
+<option value="Chinese">Chinese</option>
+<option value="Cake">Cake</option>
+<option value="Ice cream">Ice cream</option>
+<option value="Milk shake">Milk shake</option>
+<option value="Rolls">Rolls</option>
+<option value="Sweets">Sweets</option>
+
+</select>
+</div>
+<div className="add-price">
+<p className="text-lg">Product price</p>
+<input onChange={onChangeHandler} value={data.price} type="Number" name="price" placeholder="Enter price here" required />
+</div>
+</div>
+
+<button
+type='submit'
+className="add-btn"
+>ADD</button>
+</form>
+</div>
+</>
+)
+}
+
+export default Add;

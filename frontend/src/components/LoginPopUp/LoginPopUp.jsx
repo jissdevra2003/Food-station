@@ -2,9 +2,7 @@ import React, { useState } from 'react';
 import { assets } from '../../assets/assets';
 import './LoginPopUp.css'
 import { Link } from 'react-router-dom';
-function LoginPopUp({
-setShowLogin
-})
+function LoginPopUp()
 {
 const [currLogState,setCurrLogState]=useState("Create new account")
 
@@ -12,15 +10,15 @@ return (
 <>
 
 <div className="login-popup">
+
+<form  className="login-popup-container" style={{ animation: 'fadeIn 0.3s ' }}>
 <div className="login-logo">
 <img src={assets.logo}/>
 </div>
-<form  className="login-popup-container" style={{ animation: 'fadeIn 0.3s ' }}>
-
 <div className="login-popup-title">
 <h2>{currLogState}</h2>
 <Link to="/"><img 
-onClick={()=>setShowLogin(false)}
+
 src={assets.cross_icon} alt="" />
 </Link>
 
@@ -32,11 +30,13 @@ required
  />
 }
 
-<input type="email"
+<input 
+type="email"
 placeholder="Email"
 required
  />
-<input type="text"
+<input 
+type="password"
 placeholder='Password'
 required
  />

@@ -12,7 +12,7 @@ const scrollToTop=()=> {
 
 return (
 
-<div className="footer">
+<div className="footer" id="footer">
 {/* //scroll to top button */}
 
 <div className="footer-content">
@@ -26,13 +26,13 @@ alt=""
 <p>Hannah's Kitchen is a delightful food delivery website that brings gourmet meals straight to your doorstep. With a diverse menu featuring mouth-watering dishes from various cuisines, Hannah's Kitchen ensures a delightful dining experience1. Whether you're craving comfort food or a gourmet feast, their user-friendly website makes ordering seamless and convenient. Enjoy the luxury of restaurant-quality meals in the comfort of your home with Hannah's Kitchen1!</p>
 <div className="flex items-center gap-4">
 <img
-className="bg-white rounded-full ml-1 p-1 transition-transform duration-300 hover:scale-105"
+className="h-10 w-10 mx-1 cursor-pointer"
  src={assets.facebook_icon} alt="" />
 <img 
-className="p-1 mt-1 h-16 transition-transform duration-300 hover:scale-105"
+className="h-10 w-10 mx-1 cursor-pointer"
 src={assets.instagram_icon} alt="" />
 <img 
-className="bg-white rounded-full mt-2 p-1 transition-transform duration-300 hover:scale-105"
+className="h-10 w-10 mx-1 cursor-pointer"
 src={assets.x_icon} alt="" />
 </div>
 

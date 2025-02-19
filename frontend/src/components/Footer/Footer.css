@@ -1,7 +1,12 @@
 @import "tailwindcss";
+@theme{
+--font-gre:Grechen Fuemen,"sans-serif";
+--font-assistant:Assistant,"sans-serif";
+--font-encode-sans:Encode Sans,"serif"
+}
 
 .footer{
-@apply w-full flex flex-col mt-0 items-center gap-[20px] pt-[80px] bg-gray-800 text-blue-50 p-[20px_8vw] ml-0 
+@apply w-full flex flex-col font-encode-sans mt-0 items-center gap-[20px] pt-[80px] bg-gray-800 text-blue-50 p-[20px_8vw] ml-0 
 }
 
 .footer-content{
@@ -17,7 +22,7 @@
 }
 
 .footer-content-right h2,.footer-content-center h2{
-@apply text-white font-extrabold
+@apply text-white font-extrabold font-encode-sans
 } 
 
 .footer hr{

@@ -1,19 +1,26 @@
 @import "tailwindcss";
+@theme{
+--font-gre:Grechen Fuemen,"sans-serif";
+--font-assistant:Assistant,"sans-serif";
+--font-encode-sans:Encode Sans,"serif"
+}
+
  
 
 .login-popup{
-@apply absolute z-1 mb-0 font-sans w-full h-full items-center m-auto grid inset-0 bg-cover bg-gray-800
+@apply absolute z-1 mb-0  w-full h-full items-center m-auto grid inset-0 bg-cover bg-gray-800 font-encode-sans
 }
 
 .login-logo img{
-@apply h-30 items-center mt-7 mx-auto rounded-full
+@apply h-30 items-center mx-auto rounded-full mb-5
 }
 .login-popup-container{
-@apply place-self-center flex flex-col  px-6 py-8 gap-[25px] rounded-2xl w-[max(23vw,330px)] mt-0  text-[18px] bg-gray-800 text-white font-medium
+@apply place-self-center flex flex-col  px-6 py-8 gap-[25px] rounded-2xl w-[max(23vw,330px)] mt-0  text-[18px] bg-gray-800 text-white font-medium font-encode-sans
 }
 
+
 .login-popup-title{
-@apply flex justify-between items-center text-white text-[24px]
+@apply flex justify-between items-center text-white text-[24px] font-bold font-encode-sans
 }
 
 .login-popup-title img{
@@ -21,15 +28,15 @@
 }
 
 .login-popup-inputs{
-@apply flex flex-col gap-[20px] text-white
+@apply flex flex-col gap-[20px] text-white 
 }
 
 .login-popup-inputs input{
-@apply outline-none border-1 p-2 rounded-sm text-white
+@apply outline-black border-1 p-2 rounded-sm text-white font-encode-sans
 }
 
 .login-popup-container button{
-@apply border-none p-2 rounded-sm bg-blue-500 cursor-pointer transition duration-150 hover:scale-100 font-[15px]
+@apply border-none p-2 rounded-sm bg-blue-500 cursor-pointer transition duration-150 hover:scale-100 font-semibold text-[20px] font-encode-sans
 }
 .login-popup-condition{
 @apply flex items-start gap-2 mt-[-15px] 

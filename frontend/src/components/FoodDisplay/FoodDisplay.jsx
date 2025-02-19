@@ -19,7 +19,7 @@ Top dishes near you
 <p>this is great food</p>
 <div className="food-display-list" style={{ animation: 'fadeIn 2s ease-in-out' }}>
 {food_list.map((item,index)=>{
-{console.log(category,item.category)}
+//{console.log(category,item.category)}
 if(category==="All" || category===item.category)
 {
 //passing props to FoodItem component

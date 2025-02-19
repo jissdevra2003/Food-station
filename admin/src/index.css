@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Grechen+Fuemen&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@200..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans:wght@100..900&display=swap');
+
+@import "tailwindcss";
+@theme{
+--font-write1:Grechen Fuemen,"sans-serif";
+--font-assistant:Assistant,"sans-serif";
+--font-encode-sans:Encode Sans,"serif";
+}
+
+*{
+@apply p-0 m-0 box-border font-encode-sans
+}
+
+body{
+@apply  min-h-[100vh] bg-gray-800
+}
+
+hr{
+@apply border-none h-[1px] bg-gray-400
+}

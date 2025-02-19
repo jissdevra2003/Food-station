@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+@theme{
+--font-write1:Grechen Fuemen,"sans-serif";
+--font-assistant:Assistant,"sans-serif";
+--font-encode-sans:Encode Sans,"serif";
+}
+
+.sidebar{
+@apply w-[18%] min-h-[100vh] border-[1.5px] mt-25 border-gray-300 border-t border-l-0 font-[max(1vw,10px)] font-encode-sans
+/*For responsive*/
+/*sm:w-[5%] sm:min-h-[100vh] sm:border-[1.5px] sm:border-gray-300 sm:border-t sm:border-l-0 sm:font-[max(1vw,5px)]*/
+}
+
+
+.sidebar-options{
+@apply pt-[50px] pl-[30px] flex flex-col gap-[25px]
+}
+.sidebar-option.active{
+@apply bg-blue-500 text-white text-[20px] font-medium  border-white
+}
+
+.sidebar-option{
+@apply flex items-center gap-[12px] border-[1px] border-gray-300 border-r-0 p-[8px_10px] rounded-md cursor-pointer
+}

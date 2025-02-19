@@ -1,8 +1,14 @@
 @import "tailwindcss";
+@theme{
+--font-encode-sans:Encode Sans,"serif"
+}
 
 .navbar{
-@apply  fixed top-0 h-27 left-0 w-full bg-white shadow-lg z-50  flex justify-between items-center mb-2
+@apply  fixed top-0 h-27 left-0 w-full bg-white font-sans shadow-md z-50  flex justify-between items-center mb-2
 
+}
+.logo-img{
+@apply cursor-pointer mt-1 w-[150px]  rounded-full p-8 transition-transform duration-300 ease-in-out hover:scale-100 mb-5 ml-20 h-31 sm:p-9 lg:mt-1 lg:w-[150px]
 }
 
 .navbar img{
@@ -10,27 +16,39 @@
 }
 
 .navbar-menu{
-@apply flex list-none  gap-10 ml-24 text-[18px] text-emerald-900 cursor-pointer justify-center
+@apply flex list-none font-encode-sans  gap-2 ml-5 text-[9px] text-black text-lg cursor-pointer justify-center font-medium sm:text-[10px] 
+ md:text-[12px] lg:text-[20px]
+}
+.navbar-menu-item{
+@apply mr-5
+}
+.navbar-menu-item:hover{
+@apply opacity-50 text-gray-800 transition-transform duration-300 ease-in-out hover:scale-110
 }
 
 .navbar-menu li {
-  @apply transition-opacity duration-300 ease-in-out;
+  @apply transition-opacity duration-300 ease-in-out text-[9px] mr-1 sm:text-[10px] md:text-[12px] md:mr-5 md:ml-3   lg:text-[20px] lg:ml-4
 }
 
 .navbar-menu li:hover {
-  @apply opacity-50 text-gray-900 transition-transform duration-300 ease-in-out hover:scale-110
+  @apply opacity-50 text-gray-800 transition-transform duration-300 ease-in-out hover:scale-110
 }
 .navbar-right{
-@apply flex justify-between items-center mr-10 gap-[20px] 
+@apply flex justify-between items-center mr-20 gap-[20px]  
 }
 
-.navbar-right img{
-@apply w-10 h-10
+
+.navbar-right .search-icon-img{
+@apply w-10 transition-transform duration-300 ease-in-out hover:scale-110
 }
 .navbar-basket-icon{
-@apply relative w-12 h-12  mr-1 transition-transform duration-300 ease-in-out hover:scale-110
+@apply relative w-11 h-12  mr-1 transition-transform duration-300 ease-in-out hover:scale-110 rounded-sm
 }
 .button-sign-in{
-@apply bg-transparent text-base border border-gray-500 px-8 py-2.5 rounded-full cursor-pointer
-hover:bg-cyan-900 hover:text-gray-100 hover:shadow-lg transition duration-300
+@apply bg-white text-[18px] border border-gray-500 px-8 font-encode-sans py-2.5 rounded-full cursor-pointer
+hover:bg-blue-900 hover:text-gray-100 hover:shadow-lg transition duration-300 
+}
+
+.dot{
+@apply absolute min-w-[8px] min-h-[8px] bg-black rounded-[5px] top-[-8px] right-[-8px]
 }

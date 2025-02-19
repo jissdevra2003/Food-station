@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+.navbar{
+@apply fixed top-0 w-full z-50 flex justify-between items-center p-1  border-b border-gray-300 bg-gray-800 shadow-md
+
+}
+
+.navbar .logo{
+@apply w-32 h-28  cursor-pointer ml-22
+}
+.navbar .profile{
+@apply h-[50px]  cursor-pointer mr-22
+}

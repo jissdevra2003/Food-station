@@ -9,7 +9,7 @@ setCategory
 {
 return (
 <div //explore-menu
-className="flex flex-col gap-15"
+className="explore-menu"
 id="explore-menu"
 >
 <h1

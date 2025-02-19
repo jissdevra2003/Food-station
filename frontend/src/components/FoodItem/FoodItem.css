@@ -1,4 +1,9 @@
 @import "tailwindcss";
+@theme{
+--font-gre:Grechen Fuemen,"sans-serif";
+--font-assistant:Assistant,"sans-serif";
+--font-encode-sans:Encode Sans,"serif"
+}
 
 .food-item{
 @apply w-full mx-auto rounded-[15px] shadow-lg transition-all duration-500
@@ -13,7 +18,7 @@
 }
 
 .food-item-name-rating{
-@apply flex justify-between items-center mb-2
+@apply flex justify-between items-center mb-2 font-encode-sans
 }
 
 .food-item-name-rating p{
@@ -25,11 +30,11 @@
 }
 
 .food-item-description{
-@apply text-sm text-gray-600
+@apply text-sm text-gray-600 font-encode-sans text-[15px]
 }
 
 .food-item-price{
-@apply text-orange-600 mt-2 font-bold text-lg
+@apply text-black mt-2 font-bold text-lg font-encode-sans
 }
 
 
