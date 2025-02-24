@@ -12,7 +12,18 @@ const addFood=asyncHandler(async (req,res)=>{
 const {name,description,price,category}=req.body;
 // console.log(req.body)
 //console.log(req.file)
-const imageLocalPath=req.file.path;
+let imageLocalPath=""
+ if(req.file && req.file.path)
+{
+imageLocalPath=req.file.path;
+}
+else
+{
+return res
+.status(400)
+.json({success:false,message:"Image not found"})
+}
+const imageFileName=req.file.filename;
 
 
 const foodImage=await uploadOnCloudinary(imageLocalPath);
@@ -25,6 +36,7 @@ image:foodImage.url,
 category:category,
 imagePublicId:foodImage.public_id,
 imageLocalPath:imageLocalPath,
+imageFileName:imageFileName
 
 });
 //console.log(food);
@@ -40,7 +52,7 @@ new ApiResponse(200,food,"Food added successfully")
 const getAllFoodItems=asyncHandler(async (req,res)=>{
 
   //extract all food items from database
-//find method returns an array of objects in the collection
+//find method returns an array of objects from the DB collection
 const foods=await Food.find({});
 if(!foods) throw new ApiError(400,"Unable to fetch food items list")
 return res

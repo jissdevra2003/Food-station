@@ -7,7 +7,7 @@ import Cart from './pages/Cart/Cart'
 import LoginPopUp from './components/LoginPopUp/LoginPopUp.jsx'
 import Navbar from './components/Navbar/Navbar.jsx'
 import Footer from './components/Footer/Footer.jsx'
-
+import {ToastContainer} from "react-toastify"
 
 function App() 
 {
@@ -18,7 +18,7 @@ const showNavbar=location.pathname!=="/login";
 
 return (
 <>
-
+<ToastContainer/>
 {showNavbar && <Navbar/>}
 <div className="app">
 

@@ -18,7 +18,8 @@ image
 {
 
 const {cartItems,addToCart,removeFromCart}=useContext(StoreContext);
-
+// cloudinary image url 
+//console.log(image);
 
 return (
 <div className="food-item">
@@ -26,6 +27,7 @@ return (
 <div className="food-item-img-container">
 <img
 className="food-item-image"
+// here image is coming from cloudinary
 src={image} alt=""/>
 {!cartItems[id]
 ?<img

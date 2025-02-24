@@ -30,6 +30,10 @@ imageLocalPath:{
 type:String,
 required:true
 },
+imageFileName:{
+type:String,
+required:true
+}
 
 
 

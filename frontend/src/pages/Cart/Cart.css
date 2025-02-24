@@ -20,7 +20,7 @@
 @apply w-3/4 rounded-md
 }
 .cart hr{
-@apply h-[1px] bg-gray-200 border-none
+@apply h-[1px] bg-gray-600 border-none
 }
 
 .cart-bottom{
@@ -36,7 +36,7 @@
 }
 
 .cart-total hr{
-@apply m-[10px_0px]
+@apply m-[10px_0px] bg-gray-800
 }
 
 .cart-total button{

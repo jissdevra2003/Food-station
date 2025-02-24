@@ -4,17 +4,28 @@ import { assets } from '../../assets/assets';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './Navbar.css';
+import {toast} from 'react-toastify';
+import axios from "axios";
 
 function Navbar()
  {
   const [menu, setMenu] = useState("home");
-const {getTotalCartAmount}=useContext(StoreContext);
+const {getTotalCartAmount,token,setToken,url}=useContext(StoreContext);
 
-  const navigateHome = useNavigate();
+  const navigate = useNavigate();
 
   const handleClick = () => {
-    navigateHome('/');
+    navigate('/');
   };
+const logout=async ()=>{
+
+localStorage.removeItem("token");
+setToken("");
+navigate("/");
+
+
+}
+
 
   return (
     <div className="navbar">
@@ -58,9 +69,18 @@ const {getTotalCartAmount}=useContext(StoreContext);
             className={getTotalCartAmount()===0?"":"dot"}
           ></div>
         </div>
-       <Link to="/login"> <button className="button-sign-in">
+{!token?<Link to="/login"> <button className="button-sign-in">
           Sign in
         </button></Link>
+:<div className="navbar-profile">
+<img src={assets.profile_icon} alt="" />
+<ul className="nav-profile-dropdown">
+<li><img src={assets.order_icon} alt="" /><p>Orders</p></li>
+<hr />
+<li onClick={logout}><img src={assets.logout_icon} alt="" /><p>Logout</p></li>
+</ul>
+</div>}
+       
       </div>
     </div>
   );

@@ -11,8 +11,8 @@ node_modules
 dist
 dist-ssr
 *.local
-frontend/src/context/ContextUnderstanding.jsx
-frontend/src/assets/
+src/context/ContextUnderstanding.jsx/
+src/assets/
 
 
 

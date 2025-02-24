@@ -10,11 +10,17 @@
 }
 
 .list-table hr{
-@apply h-1 bg-white
+@apply h-0 bg-white
 }
 
 .list-table-format{
-@apply grid grid-cols-[0.5fr_2fr_1fr_1fr_0.5fr] font-encode-sans gap-2 mt-7
+@apply grid grid-cols-[0.5fr_2fr_1fr_1fr_0.5fr] font-encode-sans gap-2 p-[18px_15px] text-[18px]  border 
+}
+.list-table-format.title{
+@apply bg-gray-700 font-encode-sans 
+}
+.list-table-format img{
+@apply p-1 rounded-lg
 }
 
 .remove-button img{

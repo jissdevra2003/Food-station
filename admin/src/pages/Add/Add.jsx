@@ -4,10 +4,10 @@ import {assets} from '../../assets/assets.js'
 import axios from "axios";
 import { toast } from "react-toastify";
 
-function Add()
+function Add({url})
 {
 
-const url="http://localhost:4000/api/v1"
+
 
 const [image,setImage]=useState(false);
 const [data,setData]=useState({
@@ -18,10 +18,14 @@ category:"Salad"
 
 });
 
+//whenever we make changes in the input field this data will be updated using this function
 const onChangeHandler=(event)=>{
+
  const name=event.target.name;
 const value=event.target.value;
 setData(prevData=>({...prevData,[name]:value}))
+
+
 }
 
 const onSubmitHandler=async (event)=>{
@@ -38,9 +42,9 @@ formData.append("image",image);
 
 //using axios we send the request to the backend server
 //we have written add as post method
+
 const response = await axios.post(`${url}/food/add`,formData);
 
-if(response.data.success){
 
 //if successfull reset the data in the form 
 setData({
@@ -52,13 +56,14 @@ category:"Salad"
 })
 setImage(false)
 toast.success(response.data.message);
-}
-else{
-toast.error(response.data.message)
-}
+
 
 
 }
+
+
+
+
 
 
 
@@ -73,12 +78,21 @@ return (
 <img src={image?URL.createObjectURL(image):assets.upload_area } alt="" />  
 </label>
 <input 
-onChange={(e)=>setImage(e.target.files[0])}   //this will open the file explorer
+onChange={(e)=>{
+const file=e.target.files[0];
+if(!file)
+{
+console.error("Image is required");
+return;
+}
+setImage(file);
+onChangeHandler(e);
+}}   //this will open the file explorer
 type="file" id="image" hidden required />
 </div>
 <div className="add-product-name">
-<p className="text-lg">Product name</p>
-<input onChange={onChangeHandler} value={data.name} type="text" name="name" placeholder="Type here"/>
+<p className="text-lg">Product name</p>                            
+<input onChange={onChangeHandler} value={data.name} type="text" name="name" placeholder="Type here" required/>
 </div>
 <div className="add-product-description">
 <p className="text-lg">Product description</p>
