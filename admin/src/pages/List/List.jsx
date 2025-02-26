@@ -1,45 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
 import './List.css'
 import axios from "axios";
 import {toast} from 'react-toastify';
 import {useEffect,useState} from 'react';
 import { assets } from "../../assets/assets.js";
-function List({url})
+import { StoreContext } from "../../context/StoreContext.jsx";
+function List()
 {
-const [list,setList]=useState([]);
+
+const {extractList,list,url,setItemId}=useContext(StoreContext);
 
 
-
-const extractList=async ()=>{
-const response=await axios.get(`${url}/food/food-list`);
-//console.log(response);
-if(response.data.success)
-{
-toast.success("Food items")
-setList(response.data.data)
-}
-else
-{
-toast.error("Error extracting food items list");
-}
-}
 
 useEffect(()=>{
-extractList();
+extractList();   //this will set the list array
 },[])
 
-const removeItemHandler=async (foodId)=>{
-const response =await axios.post(`${url}/food/remove`,{id:foodId});
-await extractList();
-if(response.data.success)
-{
-toast.success(response.data.message);
-}
-else
-{
-toast.error("Error");
-}
-}
+
 
 return (
 <>
@@ -65,7 +42,7 @@ return (
 <div className="remove-button">
 <button>
 <img 
-onClick={()=>removeItemHandler(item._id)}
+onClick={()=>setItemId(item._id)}
 src={assets.remove_icon} alt="" />
 </button>
 </div>

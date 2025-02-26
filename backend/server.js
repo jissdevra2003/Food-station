@@ -26,11 +26,13 @@ connectDB();
 import foodRouter from './routes/food.routes.js';
 import userRouter from './routes/user.routes.js';
 import cartRouter from './routes/cart.routes.js';
+import orderRouter from './routes/order.routes.js';
 import bodyParser from "body-parser";
 app.use("/api/v1/food",foodRouter); 
 app.use("/api/v1/user",userRouter);
 app.use("/api/v1/images",express.static("uploads"));
-app.use("/api/v1/cart",cartRouter)
+app.use("/api/v1/cart",cartRouter);
+app.use("/api/v1/order",orderRouter);
 
 
 app.get("/api/v1",(req,res)=>{

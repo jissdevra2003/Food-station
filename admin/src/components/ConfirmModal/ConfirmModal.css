@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+@theme{
+--font-write1:Grechen Fuemen,"sans-serif";
+--font-assistant:Assistant,"sans-serif";
+--font-encode-sans:Encode Sans,"serif";
+}
+
+.confirm-model-container{
+@apply justify-center  rounded-lg  overflow-hidden p-11 bg-neutral-200
+}
+.confirm-model-container p{
+@apply font-encode-sans font-medium text-[20px] mb-6 text-black
+}
+.confirm-model-container .btn-container {
+  @apply flex flex-row justify-center items-center space-x-4
+}
+.confirm-model-container button{
+@apply  bg-gray-900 py-2 px-5 rounded-2xl cursor-pointer text-[18px] hover:bg-gray-700 duration-300
+}

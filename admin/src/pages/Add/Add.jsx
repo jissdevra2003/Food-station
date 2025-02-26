@@ -1,15 +1,17 @@
-import React, { useState,} from "react";
+import React, { useState,useContext} from "react";
 import './Add.css'
 import {assets} from '../../assets/assets.js'
 import axios from "axios";
 import { toast } from "react-toastify";
+import { StoreContext } from "../../context/StoreContext.jsx";
 
-function Add({url})
+function Add()
 {
 
+const {url}=useContext(StoreContext)
 
-
-const [image,setImage]=useState(false);
+const [image,setImage]=useState(null);
+const [errorMessage,setErrorMessage]=useState("");
 const [data,setData]=useState({
 name:"",
 description:"",
@@ -24,9 +26,19 @@ const onChangeHandler=(event)=>{
  const name=event.target.name;
 const value=event.target.value;
 setData(prevData=>({...prevData,[name]:value}))
-
-
 }
+
+const handleImageUpload = (e) => {
+
+  const selectedImage = e.target.files[0];
+  if (selectedImage) {
+    setImage(selectedImage);
+    setErrorMessage(""); 
+  } else {
+    setErrorMessage("Please upload an image.");
+  }
+
+};
 
 const onSubmitHandler=async (event)=>{
 event.preventDefault();
@@ -38,27 +50,26 @@ formData.append("description",data.description);
 formData.append("price",Number(data.price));
 formData.append("category",data.category);
 formData.append("image",image);
-
-
 //using axios we send the request to the backend server
 //we have written add as post method
 
-const response = await axios.post(`${url}/food/add`,formData);
-
-
+await axios.post(`${url}/food/add`,formData)
+.then((response)=>{
 //if successfull reset the data in the form 
+//console.log(response)
 setData({
 name:"",
 description:"",
 price:"",
 category:"Salad"
-
 })
-setImage(false)
+setImage(null)
 toast.success(response.data.message);
-
-
-
+})
+.catch((error)=>{
+//console.log(error)
+toast.error(error.response.data.message);
+})
 }
 
 
@@ -73,22 +84,20 @@ return (
 <form className="" onSubmit={onSubmitHandler}>
 <div className="add-img-upload">
 <p className="text-lg">Upload Image</p>
-<label htmlFor="image">
+<label htmlFor="image">    
 {/* to show the preview of image, if a image is uploaded show that otherwise show upload image only */}
 <img src={image?URL.createObjectURL(image):assets.upload_area } alt="" />  
 </label>
 <input 
-onChange={(e)=>{
-const file=e.target.files[0];
-if(!file)
-{
-console.error("Image is required");
-return;
-}
-setImage(file);
-onChangeHandler(e);
-}}   //this will open the file explorer
-type="file" id="image" hidden required />
+type="file"     //allows user to select file from their computer 
+name="image" 
+id="image"   //linking input field to the label element
+hidden 
+onChange={(event)=>{
+handleImageUpload(event);
+onChangeHandler(event);
+}}   
+ />
 </div>
 <div className="add-product-name">
 <p className="text-lg">Product name</p>                            

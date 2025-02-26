@@ -1,6 +1,6 @@
 import { createContext, useState,useEffect } from "react";
 import axios from "axios";
-
+import {toast} from "react-toastify";
 
 export const StoreContext=createContext(null);
 
@@ -25,7 +25,7 @@ const food_list = [
 */
 
 
-const addToCart=(itemId)=>{
+const addToCart=async (itemId)=>{
 // a new entry for any item 
 //first time an item is added
 if(!cartItems[itemId])
@@ -37,11 +37,38 @@ else
 {
 setCartItems((prev)=>({...prev,[itemId]:prev[itemId]+1}))
 }
+if(token)
+{
+//now using this url data will get stored in the database in users cartData 
+await axios.post(`${url}/cart/add`,{itemId},{headers:{token}})
+.then((response)=>{
+if(response.data)
+{
+toast.success(response.data.message);
+}
+})
+.catch((error)=>{
+
+toast.error("Error occured");
+})
+}
 }
 
-const removeFromCart=(itemId)=>{
+const removeFromCart=async (itemId)=>{
 setCartItems((prev)=>({...prev,[itemId]:prev[itemId]-1}))
-
+if(token)
+{
+await axios.post(`${url}/cart/remove`,{itemId},{headers:{token}})
+.then((response)=>{
+if(response.data)
+{
+toast.success(response.data.message);
+}
+})
+.catch((error)=>{
+toast.error("Error occured")
+})
+}
 }
 
 const getTotalCartAmount=()=>{
@@ -57,11 +84,24 @@ totalAmount+=itemInfo.price*cartItems[item];
 return totalAmount;
 }
 
+
+
 const fetchFoodList=async ()=>{
 //array of food items objects containing food item info will be recieved as response
-const response=await axios.get(`${url}/food/food-list`);
+await axios.get(`${url}/food/food-list`)
+.then((response)=>{
 //now we will set the food-list array  [{..},{..},{..}]
 setFoodList(response.data.data);     
+})
+
+}
+
+const loadCartData=async (token)=>{
+const response=await axios.post(`${url}/cart/get-cart`,{},{headers:{token}})
+.then((response)=>{
+setCartItems(response.data.data);
+})
+
 }
 
 // This runs only once after the initial render
@@ -70,17 +110,16 @@ useEffect(()=>{
 //load data on page
 async function loadData()
 {
-await fetchFoodList();   //this will set the food-list array
+await fetchFoodList();   //fetch the food list and set the food-list array
 if(localStorage.getItem("token"))
 {
 setToken(localStorage.getItem("token"));
+await loadCartData(localStorage.getItem("token"))
 }
 }
 //call loadData function
 loadData();
-
-
-},[])
+},[]);
 
 //the values that we want to pass to the components using context API
 const contextValue={

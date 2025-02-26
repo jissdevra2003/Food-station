@@ -8,6 +8,7 @@ import {ApiResponse} from "../utils/ApiResponse.js";
 
 
 //add food item controller(function)
+
 const addFood=asyncHandler(async (req,res)=>{
 const {name,description,price,category}=req.body;
 // console.log(req.body)
@@ -68,9 +69,6 @@ new ApiResponse(200,foods,"Food items list fetched successfully")
 })
 
 const removeFood=asyncHandler(async (req,res)=>{
-
-
-
 const food=await Food.findById(req.body.id);
 //console.log(food)
 
@@ -97,9 +95,6 @@ return res
 .json(
 new ApiResponse(200,{},"Food item removed successfully")
 )
-
-
-
 })
 
 

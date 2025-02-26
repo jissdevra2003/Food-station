@@ -1,7 +1,6 @@
 import React from 'react';
 import './FoodItem.css';
 import { assets } from '../../assets/assets';
-import {useState} from 'react';
 import {useContext} from 'react';
 import {StoreContext} from '../../context/StoreContext.jsx';
 

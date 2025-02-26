@@ -25,8 +25,8 @@ return (
 if(cartItems[item._id]>0)
 {
 return (
-<>
-<div key={index}className="cart-items-title cart-items-item">
+<div key={item._id}>
+<div className="cart-items-title cart-items-item">
 <img src={item.image} alt="" />
 <p>{item.name}</p>
 <p>${item.price}</p>
@@ -37,7 +37,7 @@ onClick={()=>removeFromCart(item._id)}
 className="cursor-pointer text-black">X</p>
 </div>
 <hr />
-</>
+</div>
 )
 }
 

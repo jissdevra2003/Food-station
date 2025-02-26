@@ -17,7 +17,7 @@
 }
 
 .place-order-left input{
-@apply mb-[15px] w-full p-2 border-[1px]  outline-cyan-200 rounded-md 
+@apply mb-[15px] w-full p-2 border-[1px]   rounded-md outline-cyan-700
 }
 
 .place-order-left .multi-fields{

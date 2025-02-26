@@ -4,7 +4,7 @@ import  Header  from '../../components/Header/Header.jsx';
 import {useState} from 'react'
 import FoodDisplay from '../../components/FoodDisplay/FoodDisplay';
 import AppDownload from '../../components/AppDownload/AppDownload.jsx';
-import Navbar from '../../components/Navbar/Navbar.jsx';
+
 
 function Home()
 {

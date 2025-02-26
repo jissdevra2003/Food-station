@@ -13,7 +13,7 @@ className="explore-menu"
 id="explore-menu"
 >
 <h1
-className="font-black text-cyan-900"
+className="font-black text-neutral-700"
 >Find your favorite food here...</h1>
 <p //explore-menu-text
 className="w-full font-semibold"

@@ -19,6 +19,11 @@ if(userExists) throw new ApiError(400,"User already exists")
 
 if(!validator.isEmail(email)) return res.status(400).json({success:false,message:"Invalid email address entered"});
 if(password.length<8) return res.status(400).json({success:false,message:"Password should contain atleast 8 letters"});
+//check for special character even if one character found then okk
+if(!password.includes("$") && !password.includes("#"))
+{
+return res.json({success:false,message:"Password should contain atleast one special character like (@#)"});
+}
 
 
 //now save the user info in DB  

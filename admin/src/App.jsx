@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 
 import './App.css'
 import Navbar from './components/Navbar/Navbar'
@@ -8,16 +8,21 @@ import Add from './pages/Add/Add.jsx';
 import List from './pages/List/List.jsx';
 import Orders from './pages/Orders/Orders.jsx';
   import { ToastContainer } from 'react-toastify';
+import ConfirmModal from './components/ConfirmModal/ConfirmModal.jsx';
+import { StoreContext } from './context/StoreContext.jsx';
 
 function App() {
-  const [count, setCount] = useState(0)
+  
 
-const url="http://localhost:4000/api/v1"
+
+
+
 
   return (
     <>
    <div className="app">
 <ToastContainer/>
+<ConfirmModal   />
 
 
 <Navbar/>
@@ -27,9 +32,9 @@ const url="http://localhost:4000/api/v1"
     
 <Routes>
 
-<Route path="/add" element={<Add url={url}/>} />
-<Route path="/list" element={<List url={url}/>}/>
-<Route path="/orders" element={<Orders url={url}/>}/>
+<Route path="/add" element={<Add />} />
+<Route path="/list" element={<List   />}/>
+<Route path="/orders" element={<Orders />}/>
 
 
 
