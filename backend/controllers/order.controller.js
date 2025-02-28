@@ -105,7 +105,7 @@ return res.json({success:false,message:"Payment failed"})
 }
 })
 
-//user orders
+//user orders for user myOrders page
 const getUserOrders=asyncHandler(async (req,res)=>{
 if(!req.user)
 {
