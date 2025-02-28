@@ -59,7 +59,7 @@ className="cursor-pointer text-black">X</p>
 <hr />
 <div className="cart-total-details">
 <b>Total</b>
-<b>${getTotalCartAmount()===0?0:getTotalCartAmount()+2}</b>
+<b className='text-[27px]'>${getTotalCartAmount()===0?0:getTotalCartAmount()+2}</b>
 </div>
 </div>
 <button

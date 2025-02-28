@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { StoreContext } from '../../context/StoreContext';
 import {useContext,useState} from 'react'
 import './PlaceOrder.css'
 import axios from "axios";
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 function PlaceOrder()
 {
@@ -28,18 +30,21 @@ setData((prevData)=>({...prevData,[name]:value}))
 
 const placeOrder=async (event)=>{
 event.preventDefault();   //page will not get reloaded
+//ordered items array
 let orderItems=[];
 food_list.map((item)=>{
 if(cartItems[item._id]>0)
 {
 let itemInfo=item;
+//add a property in the object (quantity)
 itemInfo["quantity"]=cartItems[item._id];
 orderItems.push(itemInfo);
 }
 })
+//store the info of user who placed the order
 let orderData={
 address:data,  //address info
-items:orderItems,
+items:orderItems,      //array of objects containing each food item info ordered by user
 amount:getTotalCartAmount()+2
 }
 //send the order data to api 
@@ -63,9 +68,21 @@ alert("Error")
 console.log(error);
 })
 
-
-
 }
+
+const navigate=useNavigate()
+useEffect(()=>{
+if(!token)
+{
+toast.info('Login first to place order')
+navigate("/cart")
+}
+else if(getTotalCartAmount()===0)
+{
+toast.info("Cart is empty")
+navigate("/cart")
+}
+},[token])
 
 
 return (

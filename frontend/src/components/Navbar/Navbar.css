@@ -1,6 +1,8 @@
 @import "tailwindcss";
 @theme{
---font-encode-sans:Encode Sans,"serif"
+--font-encode-sans:Encode Sans,"serif";
+--font-gre:Grechen Fuemen,"sans-serif";
+--font-assistant:Assistant,"sans-serif";
 }
 
 .navbar{
@@ -56,14 +58,14 @@ hover:bg-blue-900 hover:text-gray-100 hover:shadow-lg transition duration-300
 .navbar-profile{
 @apply relative h-2 mb-10
 }
-.navbar-profile img{
-@apply w-11 h-12
+.navbar-profile .first-second{
+@apply text-3xl bg-gray-700 font-encode-sans text-white text-[28px] font-normal rounded-full p-2 px-4  border
 }
 .nav-profile-dropdown{
-@apply absolute right-0 z-1  hidden 
+@apply absolute right-0 z-1  hidden
 }
 .nav-profile-dropdown li {
-@apply flex items-center gap-[10px] cursor-pointer text-[18px]
+@apply flex items-center gap-[10px] cursor-pointer text-[18px] text-neutral-800
 }
 .nav-profile-dropdown img{
 @apply w-[26px] h-[28px] rounded-none
@@ -72,5 +74,5 @@ hover:bg-blue-900 hover:text-gray-100 hover:shadow-lg transition duration-300
 @apply hover:text-gray-600   font-medium hover:scale-105 transition duration-300
 }
 .navbar-profile:hover .nav-profile-dropdown{
-@apply flex flex-col gap-[10px] bg-gray-100 p-[12px_25px] rounded-md border border-blue-900 outline-white list-none w-[130px]
+@apply flex flex-col gap-[10px] bg-gray-300 p-[12px_25px] rounded-md border border-blue-900 outline-white list-none w-[200px]
 }

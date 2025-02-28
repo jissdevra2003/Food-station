@@ -1,16 +1,19 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { StoreContext } from '../../context/StoreContext';
 import { assets } from '../../assets/assets';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './Navbar.css';
-import {toast} from 'react-toastify';
-import axios from "axios";
+import axios from 'axios';
+
 
 function Navbar()
  {
   const [menu, setMenu] = useState("home");
-const {getTotalCartAmount,token,setToken,url}=useContext(StoreContext);
+
+
+const {getTotalCartAmount,token,setToken,getUserDetails,user}=useContext(StoreContext);
+//
 
   const navigate = useNavigate();
 
@@ -25,6 +28,22 @@ navigate("/");
 
 
 }
+
+
+useEffect(()=>{
+if(token)
+{
+getUserDetails();
+}
+},[token])
+if(!user)
+{
+return <div>Loading....</div>
+}
+
+const name=user.name;
+const firstLetter=name[0];
+const secondLetter=name[name.indexOf(' ')+1]
 
 
   return (
@@ -73,11 +92,16 @@ navigate("/");
           Sign in
         </button></Link>
 :<div className="navbar-profile">
-<img src={assets.profile_icon} alt="" />
+<p className="first-second">{`${firstLetter.toUpperCase()}`}</p>
+
 <ul className="nav-profile-dropdown">
-<li><img src={assets.order_icon} alt="" /><p>Orders</p></li>
+<li><p className="text-[18px] text-neutral-700 font-normal ">{user?user.name.toUpperCase():`User`}</p></li>
+<hr />
+<Link  to="/myorders" ><li><img src={assets.order_icon} alt="" /><p>Orders</p></li></Link>
 <hr />
 <li onClick={logout}><img src={assets.logout_icon} alt="" /><p>Logout</p></li>
+
+
 </ul>
 </div>}
        

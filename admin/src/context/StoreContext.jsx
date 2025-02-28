@@ -12,26 +12,32 @@ const [itemId,setItemId]=useState("");
 const [list,setList]=useState([]);
 
 const extractList=async ()=>{ 
-try{                                //this will set the list array
-const response=await axios.get(`${url}/food/food-list`);
-//console.log(response);
+await axios.get(`${url}/food/food-list`)
+.then((response)=>{
+
 if(response.data.success)
 {
 toast.success("Food items")
-setList(response.data.data)
+setList(response.data.data)               //this will set the list array
 }
 else
 {
 toast.error("Error extracting food items list");
 }
-}catch(error)
-{
+
+})
+.catch((error)=>{
+
 if(error.response)
 {
 toast.error(error.response.message || "Unexpected error occured");
 }
+
+})
+//console.log(response);
+
 }
-}
+
 
 const contextValue={
 extractList,
@@ -41,6 +47,7 @@ itemId,
 setItemId
 
 }
+
 return (
 <StoreContext.Provider value={contextValue}>
 {props.children}

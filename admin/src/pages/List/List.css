@@ -14,15 +14,15 @@
 }
 
 .list-table-format{
-@apply grid grid-cols-[0.5fr_2fr_1fr_1fr_0.5fr] font-encode-sans gap-2 p-[18px_15px] text-[18px]  border 
+@apply grid grid-cols-[0.5fr_2fr_1fr_1fr_0.5fr] font-encode-sans gap-2 p-3 px-4 text-[18px]  border border-gray-500
 }
 .list-table-format.title{
 @apply bg-gray-700 font-encode-sans 
 }
 .list-table-format img{
-@apply p-1 rounded-lg
+@apply  rounded-lg h-20
 }
 
 .remove-button img{
-@apply  w-8  flex flex-col gap-[10px] justify-between items-center mb-2 cursor-pointer
+@apply  w-8 h-8 flex flex-col gap-[10px] justify-between items-center mb-2 cursor-pointer
 }

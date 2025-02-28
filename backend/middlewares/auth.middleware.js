@@ -11,12 +11,13 @@ export const verifyJWT=asyncHandler(async (req,res,next)=>{
 try
 {
 
-const {token}=req.cookies?.token || req.headers;
+const token=req.cookies?.token || req.headers.token;
 if(!token){
 return res
 .status(400)
 .json({success:false,message:"Unauthorized access"})
 }
+
 
 
 const decodedTokenInfo=jwt.verify(token,process.env.TOKEN_SECRET);
@@ -36,6 +37,7 @@ next();
 {
 console.log(error);
 return res
+.status(500)
 .json({
 success:false,
 message:"Error"

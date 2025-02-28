@@ -14,12 +14,15 @@
 
 
 .sidebar-options{
-@apply pt-[50px] pl-[30px] flex flex-col gap-[25px]
+@apply pt-[50px] pl-[30px] flex flex-col gap-[20px]
+}
+.sidebar-option img{
+@apply w-8
 }
 .sidebar-option.active{
-@apply bg-blue-500 text-white text-[20px] font-medium  border-white
+@apply bg-blue-500 text-white text-[18px] font-medium  border-white
 }
 
 .sidebar-option{
-@apply flex items-center gap-[12px] border-[1px] border-gray-300 border-r-0 p-[8px_10px] rounded-md cursor-pointer
+@apply flex items-center gap-[8px] border-[1px] border-gray-300 border-r-0 p-2 px-4 rounded-md cursor-pointer
 }

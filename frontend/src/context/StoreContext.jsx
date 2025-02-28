@@ -10,6 +10,7 @@ const [cartItems,setCartItems]=useState({});
 const url="http://localhost:4000/api/v1";
 const [token,setToken]=useState("");
 const [food_list,setFoodList]=useState([])
+const [user,setUser]=useState(null);
 /*
 const cartItems={
 //itemId:quantity
@@ -62,7 +63,7 @@ await axios.post(`${url}/cart/remove`,{itemId},{headers:{token}})
 .then((response)=>{
 if(response.data)
 {
-toast.success(response.data.message);
+toast.info(response.data.message);
 }
 })
 .catch((error)=>{
@@ -84,20 +85,34 @@ totalAmount+=itemInfo.price*cartItems[item];
 return totalAmount;
 }
 
+const getUserDetails=async ()=>{
+try
+{
+const response=await axios.get(`${url}/user/profile`,{headers:{token}});
+
+// console.log(response)
+setUser(response.data.data)
+
+}catch(error)
+{
+console.log(error)
+}
+}
+
 
 
 const fetchFoodList=async ()=>{
 //array of food items objects containing food item info will be recieved as response
 await axios.get(`${url}/food/food-list`)
 .then((response)=>{
-//now we will set the food-list array  [{..},{..},{..}]
+//now we will set the food-list array  [{..},{..},{..} ....]
 setFoodList(response.data.data);     
 })
 
 }
 
 const loadCartData=async (token)=>{
-const response=await axios.post(`${url}/cart/get-cart`,{},{headers:{token}})
+await axios.post(`${url}/cart/get-cart`,{},{headers:{token}})
 .then((response)=>{
 setCartItems(response.data.data);
 })
@@ -131,7 +146,9 @@ removeFromCart,
 getTotalCartAmount,
 url,
 token,
-setToken
+setToken,
+getUserDetails,
+user
 }
 return (
 <StoreContext.Provider value={contextValue}>

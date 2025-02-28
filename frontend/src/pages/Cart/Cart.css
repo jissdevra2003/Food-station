@@ -32,7 +32,7 @@
 }
 
 .cart-total-details{
-@apply justify-between flex text-blue-950 font-sans
+@apply justify-between flex text-blue-950 font-sans 
 }
 
 .cart-total hr{

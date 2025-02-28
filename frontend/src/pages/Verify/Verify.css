@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+@theme{
+--font-gre:Grechen Fuemen,"sans-serif";
+--font-assistant:Assistant,"sans-serif";
+--font-encode-sans:Encode Sans,"serif"
+}
+
+
+.verify{
+@apply min-h-[60vh] grid
+}
+.verify .spinner{
+@apply w-20 h-20 place-self-center border-2 bg-gray-200 border-t-blue-400 rounded-full animate-spin
+}

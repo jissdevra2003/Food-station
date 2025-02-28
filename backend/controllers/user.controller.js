@@ -12,8 +12,8 @@ const registerUser=asyncHandler(async (req,res)=>{
 const {name,email,password}=req.body;
 
 
-if(name==="") return res.status(400).json({success:false,message:"Name required"});
-if(email==="") return res.status(400).json({success:false,message:"Email required"});
+if(name.trim()==="") return res.status(400).json({success:false,message:"Name required"});
+if(email.trim()==="") return res.status(400).json({success:false,message:"Email required"});
 const userExists=await User.findOne({email})
 if(userExists) throw new ApiError(400,"User already exists")
 
@@ -94,8 +94,27 @@ token
 
 })
 
+const getUserProfile=asyncHandler(async (req,res)=>{
+if(!req.user)
+{
+return res.status(400)
+.json({success:false,message:"Login first"})
+}
+const user=await User.findById(req.user._id).select("-_id -password -createdAt -updatedAt -__v");
+if(!user)
+{
+return res.status(500)
+.json({success:false,message:"Unable to fetch user details"})
+}
+ return res.status(200)
+.json(
+new ApiResponse(200,user,"User details fetched successfully")
+)
+
+})
 
 
 
 
-export {registerUser,loginUser}
+
+export {registerUser,loginUser,getUserProfile}

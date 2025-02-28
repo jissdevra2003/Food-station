@@ -9,7 +9,7 @@ import List from './pages/List/List.jsx';
 import Orders from './pages/Orders/Orders.jsx';
   import { ToastContainer } from 'react-toastify';
 import ConfirmModal from './components/ConfirmModal/ConfirmModal.jsx';
-import { StoreContext } from './context/StoreContext.jsx';
+
 
 function App() {
   
