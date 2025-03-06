@@ -15,7 +15,8 @@ if(!req.user)
 return res.status(400)
 .json({success:false,message:"User not authorized"})
 }
-const {items,amount,address}=req.body;
+const {items,amount,address}=req.body;    //from orderData sent in req body
+
 const newOrder=await Order.create({
 userId:req.user._id,
 items:items,       //items is an array of objects contaning food items info

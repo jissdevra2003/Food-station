@@ -87,7 +87,11 @@ src={assets.cross_icon} alt="" />
 
 </div>
 <div className="login-popup-inputs">
-{currLogState==="Login"?<></>:<input 
+{currLogState==="Login"
+?
+<></>
+:
+<input 
 type="text"
 name="name"
 value={data.name}
@@ -114,6 +118,7 @@ onChange={onChangeHandler}
 required
  />
 </div>
+<Link to="/forgot-password" className="text-blue-500 hover:underline cursor-pointer">Forgot password?</Link>
 <button type="submit">{currLogState==="Create new account"?"Create account":"Login"}</button>
 <div className="login-popup-condition">
 <input type="checkbox" required/>

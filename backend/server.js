@@ -9,6 +9,7 @@ const app=express();
 
 
 //middlewares
+// Use express.json() middleware to automatically parse incoming JSON data in request bodies
 app.use(express.json())
 app.use(cors({
 origin:process.env.CORS_ORIGIN,
@@ -16,6 +17,7 @@ credentials:true
 })) 
 app.use(bodyParser.json());
 app.use(cookieParser());
+// Use express.urlencoded() middleware to automatically parse URL-encoded data from request bodies
 app.use(express.urlencoded({ extended: true, limit: "10kb" }));
 
 //connect to DB

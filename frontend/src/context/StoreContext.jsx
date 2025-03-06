@@ -10,7 +10,8 @@ const [cartItems,setCartItems]=useState({});
 const url="http://localhost:4000/api/v1";
 const [token,setToken]=useState("");
 const [food_list,setFoodList]=useState([])
-const [user,setUser]=useState(null);
+const [user,setUser]=useState({});
+ const [name,setName]=useState("User");
 /*
 const cartItems={
 //itemId:quantity
@@ -78,20 +79,21 @@ for(const item in cartItems)  //to iterate inside the cartItems object
 {
 if(cartItems[item]>0)
 {
-let itemInfo=food_list.find((product)=> product._id===item);
+let itemInfo=food_list.find((product)=> product._id===item); //item here is the food item id
 totalAmount+=itemInfo.price*cartItems[item];
 }
 }
 return totalAmount;
 }
 
-const getUserDetails=async ()=>{
+const getUserDetails=async (token)=>{
 try
 {
 const response=await axios.get(`${url}/user/profile`,{headers:{token}});
-
 // console.log(response)
-setUser(response.data.data)
+const user=response.data.data
+setUser(user)
+setName(user.name)
 
 }catch(error)
 {
@@ -112,6 +114,7 @@ setFoodList(response.data.data);
 }
 
 const loadCartData=async (token)=>{
+//user.cartData object will be recieved in response
 await axios.post(`${url}/cart/get-cart`,{},{headers:{token}})
 .then((response)=>{
 setCartItems(response.data.data);
@@ -122,15 +125,19 @@ setCartItems(response.data.data);
 // This runs only once after the initial render
 //and also set the token in local storage when page reloads
 useEffect(()=>{
+
 //load data on page
 async function loadData()
 {
-await fetchFoodList();   //fetch the food list and set the food-list array
+await fetchFoodList(); //fetch the food list and set the food-list array
+
 if(localStorage.getItem("token"))
 {
 setToken(localStorage.getItem("token"));
 await loadCartData(localStorage.getItem("token"))
+await getUserDetails(localStorage.getItem("token"));  
 }
+
 }
 //call loadData function
 loadData();
@@ -148,7 +155,8 @@ url,
 token,
 setToken,
 getUserDetails,
-user
+user,
+name
 }
 return (
 <StoreContext.Provider value={contextValue}>

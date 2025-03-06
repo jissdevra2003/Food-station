@@ -53,6 +53,7 @@ formData.append("image",image);
 //using axios we send the request to the backend server
 //we have written add as post method
 
+//add food in the database
 await axios.post(`${url}/food/add`,formData)
 .then((response)=>{
 //if successfull reset the data in the form 

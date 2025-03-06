@@ -28,7 +28,12 @@ const imageFileName=req.file.filename;
 
 
 const foodImage=await uploadOnCloudinary(imageLocalPath);
-if(!foodImage) throw new ApiError(500,"Unable to upload image on cloud"); 
+if(!foodImage)
+{
+return res
+.status(500)
+.json({success:false,message:"Unable to upload image on cloud"})
+}
 const food=await Food.create({
 name:name,
 description:description,

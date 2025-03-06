@@ -29,6 +29,4 @@ width:50px
 @apply text-neutral-700 text-[16px]
 }
 
-.my-orders-order button{
-@apply bg-indigo-800 text-white font-normal rounded-3xl p-2 px-2 cursor-pointer hover:bg-gray-500 transition duration-300
-}
+

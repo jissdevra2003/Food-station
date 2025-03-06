@@ -10,9 +10,10 @@ import axios from 'axios';
 function Navbar()
  {
   const [menu, setMenu] = useState("home");
+ 
 
 
-const {getTotalCartAmount,token,setToken,getUserDetails,user}=useContext(StoreContext);
+const {getTotalCartAmount,token,setToken,name}=useContext(StoreContext);
 //
 
   const navigate = useNavigate();
@@ -30,20 +31,8 @@ navigate("/");
 }
 
 
-useEffect(()=>{
-if(token)
-{
-getUserDetails();
-}
-},[token])
-if(!user)
-{
-return <div>Loading....</div>
-}
 
-const name=user.name;
-const firstLetter=name[0];
-const secondLetter=name[name.indexOf(' ')+1]
+
 
 
   return (
@@ -92,10 +81,15 @@ const secondLetter=name[name.indexOf(' ')+1]
           Sign in
         </button></Link>
 :<div className="navbar-profile">
-<p className="first-second">{`${firstLetter.toUpperCase()}`}</p>
+
+<div className="relative inline-flex items-center justify-center w-11 h-11 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">
+    <span className="font-medium text-[20px] text-white">{name[0]}</span>
+</div>
+
 
 <ul className="nav-profile-dropdown">
-<li><p className="text-[18px] text-neutral-700 font-normal ">{user?user.name.toUpperCase():`User`}</p></li>
+
+<li><p className="text-[18px] text-neutral-700 font-normal ">{name.toUpperCase()}</p></li>
 <hr />
 <Link  to="/myorders" ><li><img src={assets.order_icon} alt="" /><p>Orders</p></li></Link>
 <hr />

@@ -10,12 +10,13 @@ import Footer from './components/Footer/Footer.jsx'
 import {ToastContainer} from "react-toastify"
 import Verify from './pages/Verify/Verify.jsx'
 import MyOrders from './pages/MyOrders/MyOrders.jsx'
+import ForgotPassword from './pages/ForgotPassword/ForgotPassword.jsx'
 
 function App() 
 {
 
 const location=useLocation();
-const showNavbar=location.pathname!=="/login";
+const showNavbar=location.pathname!=="/login" && location.pathname!=="/forgot-password";
 
 
 return (
@@ -32,6 +33,7 @@ return (
 <Route path="/placeOrder" element={<PlaceOrder/>} />
 <Route path="/verify" element={<Verify/>}/>
 <Route path="/myorders" element={<MyOrders/>}  />
+<Route path="/forgot-password" element={<ForgotPassword/>}/>
 
 
 </Routes>
